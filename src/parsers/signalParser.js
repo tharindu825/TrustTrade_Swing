@@ -19,6 +19,18 @@ class TelegramSignalParser {
             coin: /Coin pair:\s*([A-Z0-9]+)/i,
             direction: /Order:\s*(buy|sell)/i
         };
+
+        // Patterns for the Swing trade signal format
+        this.swingPatterns = {
+            signalId: /SIGNAL ID:\s*#([A-Z0-9]+)/i,
+            coin: /COIN:\s*\$([A-Z0-9]+)\/USDT/i,
+            direction: /Direction:\s*(LONG|SHORT)/i,
+            type: /Type:\s*(Swing)/i,
+            leverage: /Leverage:\s*(\d+)-?(\d*)x/i,
+            entryPrice: /ENTRY:\s*([0-9.]+)\s*-\s*([0-9.]+)/i,
+            targetLevels: /Target\s*\d+:\s*([0-9.]+)/gi,
+            stopLoss: /STOP LOSS:\s*([0-9.]+)/i
+        };
     }
 
     /**
@@ -28,7 +40,8 @@ class TelegramSignalParser {
         const replacements = {
             '📌': '', '⭕️': '', '📈': '', '📉': '', '✴️': '', '⚠️': '',
             '🟢': '', '🔴': '', '⭐': '', '🚀': '', '💠': '',
-            '🇱🇰': '', '🔥': '', '🔔': '', '✅': '', '⏰': '', '⚠': ''
+            '🇱🇰': '', '🔥': '', '🔔': '', '✅': '', '⏰': '', '⚠': '',
+            '📍': '', '⬆️': '', '⬇️': '', '🔘': '', '🚫': ''
         };
 
         let normalized = text;
@@ -49,7 +62,60 @@ class TelegramSignalParser {
             const normalizedText = this._normalizeText(text);
             logger.info(`Parsing normalized message: ${normalizedText.substring(0, 200)}...`);
 
-            // Try to parse new signal format first
+            // Try to parse Swing signal format first
+            const swingCoinMatch = normalizedText.match(this.swingPatterns.coin);
+            const swingDirMatch = normalizedText.match(this.swingPatterns.direction);
+            const swingTypeMatch = normalizedText.match(this.swingPatterns.type);
+
+            if (swingCoinMatch && swingDirMatch && swingTypeMatch) {
+                const coinName = swingCoinMatch[1].toUpperCase();
+                const coin = `${coinName}USDT`;
+                const directionRaw = swingDirMatch[1].toUpperCase();
+                const direction = directionRaw === 'LONG' ? 'LONG' : 'SHORT';
+                
+                // Extract entry range and calculate average
+                const entryMatch = normalizedText.match(this.swingPatterns.entryPrice);
+                let entryPrice = null;
+                if (entryMatch) {
+                    const entryLow = parseFloat(entryMatch[1]);
+                    const entryHigh = parseFloat(entryMatch[2]);
+                    entryPrice = (entryLow + entryHigh) / 2;
+                }
+
+                // Extract targets
+                const targets = [];
+                let match;
+                while ((match = this.swingPatterns.targetLevels.exec(normalizedText)) !== null) {
+                    targets.push(parseFloat(match[1]));
+                }
+
+                // Extract Stop Loss
+                const slMatch = normalizedText.match(this.swingPatterns.stopLoss);
+                const slPrice = slMatch ? parseFloat(slMatch[1]) : null;
+
+                if (entryPrice && targets.length > 0 && slPrice) {
+                    logger.info(`Swing signal detected: Coin=${coin}, Direction=${direction}, Entry=${entryPrice}, Targets=${targets.length}, SL=${slPrice}`);
+                    
+                    return {
+                        coin,
+                        direction,
+                        entryPrices: [entryPrice],
+                        targets,
+                        slPrice,
+                        leverage: `${process.env.DEFAULT_LEVERAGE || 10}X`, // Use env leverage as requested
+                        isTakeProfit: false,
+                        profit: 0.0,
+                        type: 'SWING',
+                        timestamp,
+                        message: text
+                    };
+                } else {
+                    logger.warn(`Swing format detected but missing entry, targets, or SL data for ${coin}`);
+                    return null;
+                }
+            }
+
+            // Try to parse new signal format next
             const signalHeaderMatch = normalizedText.match(this.newPatterns.signalHeader);
 
             if (signalHeaderMatch) {
