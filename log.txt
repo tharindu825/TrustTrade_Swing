@@ -1,0 +1,155 @@
+PS X:\Sushmitha\Java> npm start
+
+> trusttrade-js@1.0.0 start
+> node index.js
+
+: 🚀 Starting TrustTrade Bot...
+: ✅ Configuration validated
+: Initializing Binance trader...
+: Initializing Binance clients...
+: Trading client authenticated successfully
+: Monitoring client authenticated successfully
+: Cached 586 valid trading symbols
+: Initializing trading strategy...
+: Starting web dashboard...
+: Initializing Telegram client...
+: Connecting to Telegram with phone: +94766680474
+[2026-01-19T15:58:54.166] [INFO] - [Running gramJS version 2.26.21]
+[2026-01-19T15:58:54.171] [INFO] - [Connecting to 149.154.167.91:80/TCPFull...]
+: Web dashboard started at http://0.0.0.0:5000
+[2026-01-19T15:58:56.053] [INFO] - [Connection to 149.154.167.91:80/TCPFull complete!]
+[2026-01-19T15:58:56.054] [INFO] - [Using LAYER 198 for initial connect]
+[2026-01-19T15:58:56.933] [INFO] - [Phone migrated to 5]
+[2026-01-19T15:58:57.141] [INFO] - [Reconnecting to new data center 5]
+[2026-01-19T15:58:57.328] [WARN] - [Disconnecting...]
+[2026-01-19T15:58:57.329] [INFO] - [Disconnecting from 149.154.167.91:80/TCPFull...]
+[2026-01-19T15:58:57.331] [INFO] - [Connecting to 91.108.56.157:80/TCPFull...]
+[2026-01-19T15:58:57.333] [INFO] - [connection closed]
+[2026-01-19T15:58:58.054] [INFO] - [connection closed]
+[2026-01-19T15:58:58.055] [ERROR] - [WebSocket connection failed attempt: 1]
+Error: Not connected
+    at ConnectionTCPFull.recv (X:\Sushmitha\Java\node_modules\telegram\network\connection\Connection.js:71:15)
+    at async MTProtoPlainSender.send (X:\Sushmitha\Java\node_modules\telegram\network\MTProtoPlainSender.js:44:16)
+    at async doAuthentication (X:\Sushmitha\Java\node_modules\telegram\network\Authenticator.js:89:28)
+    at async MTProtoSender._connect (X:\Sushmitha\Java\node_modules\telegram\network\MTProtoSender.js:243:25)
+    at async MTProtoSender.connect (X:\Sushmitha\Java\node_modules\telegram\network\MTProtoSender.js:151:17)
+    at async TelegramClient.connect (X:\Sushmitha\Java\node_modules\telegram\client\TelegramClient.js:1088:15)
+    at async TelegramClient._switchDC (X:\Sushmitha\Java\node_modules\telegram\client\TelegramClient.js:1126:16)
+    at async Object.invoke (X:\Sushmitha\Java\node_modules\telegram\client\users.js:87:17)
+    at async Object.sendCode (X:\Sushmitha\Java\node_modules\telegram\client\auth.js:269:28)
+    at async Object.signInUser (X:\Sushmitha\Java\node_modules\telegram\client\auth.js:85:36)
+[2026-01-19T15:58:59.059] [INFO] - [Connecting to 91.108.56.157:80/TCPFull...]
+[2026-01-19T15:59:01.117] [INFO] - [Connection to 91.108.56.157:80/TCPFull complete!]
+[2026-01-19T15:59:01.117] [INFO] - [Using LAYER 198 for initial connect]
+? Please enter the code you received:  12751
+? Please enter your password:  Ddunac@41
+[2026-01-19T16:00:00.359] [INFO] - [Signed in successfully as Tharindu Dilshan]
+: Connected to Telegram successfully!
+: Session string: 1BQANOTEuMTA4LjU2LjE1NwG7XVetb+ccGO9JNGHlvvIIW2YSttwvQbDF5jIMDgX/TzZKNbdGgMr0HMbP2m7mg+QYNepWPWDvs1AAY5ZH5iECa73N0MRgsyOKdOUe9I18laEGa7sb7H2arZYr1rhMJRkmjM0x0DF3XvXW4qeF8sZL5kTLzpwarPJDh+WS+55iL8M0+klaGMz49ZbIeCCl5duZ0pM9S9WyG1tVy8Kfp43xtbmZAt2tb30HXSL6yHI2pTDmmIve9jBvGWFh3ILR9o6K+pO3IjQDm1deAFQmU6h0PTrGsGNACcka2lTH3JTF/bkDIGhpCtUJF4slI5U/RKsPgCxt+MADGUO96kcFE4x02g==
+: ✅ All components initialized successfully
+: 👂 Starting to listen for signals...
+: Resolving channel: 2596425817:7931839598301278885
+: Error: Could not find the input entity for {"userId":"2596425817","className":"PeerUser"}.
+         Please read https://docs.telethon.dev/en/stable/concepts/entities.html to find out more details.
+    at Object.getInputEntity (X:\Sushmitha\Java\node_modules\telegram\client\users.js:337:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.getEntity (X:\Sushmitha\Java\node_modules\telegram\client\users.js:168:25)
+    at async TelegramSignalBot.getChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:71:27)
+    at async TelegramSignalBot.listenToChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:115:29)
+    at async TrustTradeBot.start (file:///X:/Sushmitha/Java/index.js:133:13)
+: Error: Could not find the input entity for {"userId":"2596425817","className":"PeerUser"}.
+         Please read https://docs.telethon.dev/en/stable/concepts/entities.html to find out more details.
+    at Object.getInputEntity (X:\Sushmitha\Java\node_modules\telegram\client\users.js:337:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.getEntity (X:\Sushmitha\Java\node_modules\telegram\client\users.js:168:25)
+    at async TelegramSignalBot.getChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:71:27)
+    at async TelegramSignalBot.listenToChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:115:29)
+    at async TrustTradeBot.start (file:///X:/Sushmitha/Java/index.js:133:13)
+: Reconnecting in 10 seconds...
+: Connecting to Telegram with phone: +94766680474
+[2026-01-19T16:00:10.552] [INFO] - [Running gramJS version 2.26.21]
+[2026-01-19T16:00:10.554] [INFO] - [Connecting to 91.108.56.157:80/TCPFull...]
+[2026-01-19T16:00:10.706] [INFO] - [Connection to 91.108.56.157:80/TCPFull complete!]
+[2026-01-19T16:00:10.707] [INFO] - [Using LAYER 198 for initial connect]
+: Connected to Telegram successfully!
+: Session string: 1BQANOTEuMTA4LjU2LjE1NwG7XVetb+ccGO9JNGHlvvIIW2YSttwvQbDF5jIMDgX/TzZKNbdGgMr0HMbP2m7mg+QYNepWPWDvs1AAY5ZH5iECa73N0MRgsyOKdOUe9I18laEGa7sb7H2arZYr1rhMJRkmjM0x0DF3XvXW4qeF8sZL5kTLzpwarPJDh+WS+55iL8M0+klaGMz49ZbIeCCl5duZ0pM9S9WyG1tVy8Kfp43xtbmZAt2tb30HXSL6yHI2pTDmmIve9jBvGWFh3ILR9o6K+pO3IjQDm1deAFQmU6h0PTrGsGNACcka2lTH3JTF/bkDIGhpCtUJF4slI5U/RKsPgCxt+MADGUO96kcFE4x02g==
+: Resolving channel: 2596425817:7931839598301278885
+: Error: Could not find the input entity for {"userId":"2596425817","className":"PeerUser"}.
+         Please read https://docs.telethon.dev/en/stable/concepts/entities.html to find out more details.
+    at Object.getInputEntity (X:\Sushmitha\Java\node_modules\telegram\client\users.js:337:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.getEntity (X:\Sushmitha\Java\node_modules\telegram\client\users.js:168:25)
+    at async TelegramSignalBot.getChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:71:27)
+    at async TelegramSignalBot.listenToChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:115:29)
+    at async TelegramSignalBot.listenToChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:169:13)
+    at async TrustTradeBot.start (file:///X:/Sushmitha/Java/index.js:133:13)
+: Error: Could not find the input entity for {"userId":"2596425817","className":"PeerUser"}.
+         Please read https://docs.telethon.dev/en/stable/concepts/entities.html to find out more details.
+    at Object.getInputEntity (X:\Sushmitha\Java\node_modules\telegram\client\users.js:337:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.getEntity (X:\Sushmitha\Java\node_modules\telegram\client\users.js:168:25)
+    at async TelegramSignalBot.getChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:71:27)
+    at async TelegramSignalBot.listenToChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:115:29)
+    at async TelegramSignalBot.listenToChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:169:13)
+    at async TrustTradeBot.start (file:///X:/Sushmitha/Java/index.js:133:13)
+: Reconnecting in 10 seconds...
+: Connecting to Telegram with phone: +94766680474
+[2026-01-19T16:00:21.403] [INFO] - [Running gramJS version 2.26.21]
+[2026-01-19T16:00:21.404] [INFO] - [Connecting to 91.108.56.157:80/TCPFull...]
+[2026-01-19T16:00:21.557] [INFO] - [Connection to 91.108.56.157:80/TCPFull complete!]
+[2026-01-19T16:00:21.557] [INFO] - [Using LAYER 198 for initial connect]
+: Connected to Telegram successfully!
+: Session string: 1BQANOTEuMTA4LjU2LjE1NwG7XVetb+ccGO9JNGHlvvIIW2YSttwvQbDF5jIMDgX/TzZKNbdGgMr0HMbP2m7mg+QYNepWPWDvs1AAY5ZH5iECa73N0MRgsyOKdOUe9I18laEGa7sb7H2arZYr1rhMJRkmjM0x0DF3XvXW4qeF8sZL5kTLzpwarPJDh+WS+55iL8M0+klaGMz49ZbIeCCl5duZ0pM9S9WyG1tVy8Kfp43xtbmZAt2tb30HXSL6yHI2pTDmmIve9jBvGWFh3ILR9o6K+pO3IjQDm1deAFQmU6h0PTrGsGNACcka2lTH3JTF/bkDIGhpCtUJF4slI5U/RKsPgCxt+MADGUO96kcFE4x02g==
+: Resolving channel: 2596425817:7931839598301278885
+: Error: Could not find the input entity for {"userId":"2596425817","className":"PeerUser"}.
+         Please read https://docs.telethon.dev/en/stable/concepts/entities.html to find out more details.
+    at Object.getInputEntity (X:\Sushmitha\Java\node_modules\telegram\client\users.js:337:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.getEntity (X:\Sushmitha\Java\node_modules\telegram\client\users.js:168:25)
+    at async TelegramSignalBot.getChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:71:27)
+    at async TelegramSignalBot.listenToChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:115:29)
+    at async TelegramSignalBot.listenToChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:169:13)
+    at async TelegramSignalBot.listenToChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:169:13)
+    at async TrustTradeBot.start (file:///X:/Sushmitha/Java/index.js:133:13)
+: Error: Could not find the input entity for {"userId":"2596425817","className":"PeerUser"}.
+         Please read https://docs.telethon.dev/en/stable/concepts/entities.html to find out more details.
+    at Object.getInputEntity (X:\Sushmitha\Java\node_modules\telegram\client\users.js:337:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.getEntity (X:\Sushmitha\Java\node_modules\telegram\client\users.js:168:25)
+    at async TelegramSignalBot.getChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:71:27)
+    at async TelegramSignalBot.listenToChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:115:29)
+    at async TelegramSignalBot.listenToChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:169:13)
+    at async TelegramSignalBot.listenToChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:169:13)
+    at async TrustTradeBot.start (file:///X:/Sushmitha/Java/index.js:133:13)
+: Reconnecting in 10 seconds...
+: Connecting to Telegram with phone: +94766680474
+[2026-01-19T16:00:32.220] [INFO] - [Running gramJS version 2.26.21]
+[2026-01-19T16:00:32.222] [INFO] - [Connecting to 91.108.56.157:80/TCPFull...]
+[2026-01-19T16:00:32.305] [INFO] - [Connection to 91.108.56.157:80/TCPFull complete!]
+[2026-01-19T16:00:32.306] [INFO] - [Using LAYER 198 for initial connect]
+: Connected to Telegram successfully!
+: Session string: 1BQANOTEuMTA4LjU2LjE1NwG7XVetb+ccGO9JNGHlvvIIW2YSttwvQbDF5jIMDgX/TzZKNbdGgMr0HMbP2m7mg+QYNepWPWDvs1AAY5ZH5iECa73N0MRgsyOKdOUe9I18laEGa7sb7H2arZYr1rhMJRkmjM0x0DF3XvXW4qeF8sZL5kTLzpwarPJDh+WS+55iL8M0+klaGMz49ZbIeCCl5duZ0pM9S9WyG1tVy8Kfp43xtbmZAt2tb30HXSL6yHI2pTDmmIve9jBvGWFh3ILR9o6K+pO3IjQDm1deAFQmU6h0PTrGsGNACcka2lTH3JTF/bkDIGhpCtUJF4slI5U/RKsPgCxt+MADGUO96kcFE4x02g==
+: Resolving channel: 2596425817:7931839598301278885
+: Error: Could not find the input entity for {"userId":"2596425817","className":"PeerUser"}.
+         Please read https://docs.telethon.dev/en/stable/concepts/entities.html to find out more details.
+    at Object.getInputEntity (X:\Sushmitha\Java\node_modules\telegram\client\users.js:337:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.getEntity (X:\Sushmitha\Java\node_modules\telegram\client\users.js:168:25)
+    at async TelegramSignalBot.getChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:71:27)
+    at async TelegramSignalBot.listenToChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:115:29)
+    at async TelegramSignalBot.listenToChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:169:13)
+    at async TelegramSignalBot.listenToChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:169:13)
+    at async TelegramSignalBot.listenToChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:169:13)
+    at async TrustTradeBot.start (file:///X:/Sushmitha/Java/index.js:133:13)
+: Error: Could not find the input entity for {"userId":"2596425817","className":"PeerUser"}.
+         Please read https://docs.telethon.dev/en/stable/concepts/entities.html to find out more details.
+    at Object.getInputEntity (X:\Sushmitha\Java\node_modules\telegram\client\users.js:337:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.getEntity (X:\Sushmitha\Java\node_modules\telegram\client\users.js:168:25)
+    at async TelegramSignalBot.getChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:71:27)
+    at async TelegramSignalBot.listenToChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:115:29)
+    at async TelegramSignalBot.listenToChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:169:13)
+    at async TelegramSignalBot.listenToChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:169:13)
+    at async TelegramSignalBot.listenToChannel (file:///X:/Sushmitha/Java/src/telegram/telegramClient.js:169:13)
+    at async TrustTradeBot.start (file:///X:/Sushmitha/Java/index.js:133:13)
+: Reconnecting in 10 seconds...
