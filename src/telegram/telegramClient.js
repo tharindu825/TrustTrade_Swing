@@ -1,5 +1,6 @@
 import { TelegramClient } from 'telegram';
 import { StringSession } from 'telegram/sessions/index.js';
+import { NewMessage } from 'telegram/events/index.js';
 import input from 'input';
 import logger from '../utils/logger.js';
 import TelegramSignalParser from '../parsers/signalParser.js';
@@ -135,15 +136,25 @@ class TelegramSignalBot {
     async listenToChannel() {
         try {
             const channel = await this.getChannel();
+            const channelId = channel.id; // BigInt channel ID for peer filtering
 
             logger.info(`Listening to channel: ${channel.title || 'Unknown'}...`);
 
-            // Add event handler for new messages
+            // Use NewMessage with the numeric channel ID (not the entity object)
+            // Passing an entity object directly causes "Cannot find entity [object Object]"
             this.client.addEventHandler(async (event) => {
                 try {
                     if (!event.message) return;
 
+                    // Filter: only process messages from our target channel
+                    const peerId = event.message.peerId;
+                    if (peerId && peerId.channelId && peerId.channelId !== channelId) {
+                        return;
+                    }
+
                     const messageText = event.message.message;
+                    if (!messageText) return;
+
                     const messageTimestamp = event.message.date * 1000; // Convert to ms
 
                     logger.debug(`New message received: ${messageText.substring(0, 100)}...`);
@@ -163,7 +174,6 @@ class TelegramSignalBot {
                         if (signal.isTakeProfit) {
                             if (signal.message.includes('Closed due to opposite direction')) {
                                 logger.info(`Received 'Closed due to opposite direction' signal for ${signal.coin}`);
-                                // Let the signal handler deal with this
                                 await this.signalHandler(signal);
                             } else {
                                 logger.info(`Ignoring TP signal for ${signal.coin} (profit ${signal.profit}%). Bot uses own TP1/TP2 system.`);
@@ -177,10 +187,12 @@ class TelegramSignalBot {
                 } catch (error) {
                     logger.error(`Error processing message: ${error.message}`, error);
                 }
-            }, {});
+            }, new NewMessage({}));
 
-            // Keep the client running
-            await this.client.run();
+            // gramjs v2 has no .run() or .runUntilDisconnected() — the client runs in the
+            // background after .start(). Use a never-resolving promise to keep Node alive.
+            logger.info('Event handler registered. Bot is now listening...');
+            await new Promise(() => {});
 
         } catch (error) {
             logger.error(`Error in listenToChannel: ${error.message}`, error);
